@@ -78,7 +78,7 @@ h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; letter-spacing: 
 .btn:hover { transform: translateY(-2px); }
 .btn .ar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
 .btn .ar svg { width: 14px; height: 14px; }
-.btn.sm { padding: 10px 18px; font-size: 13px; }
+.btn.sm { padding: 8px 16px; font-size: 13px; }
 .btn.orange { background: var(--accent); color: var(--accent-ink); padding: 11px 18px; font-size: 13.5px; }
 .btn.out { background: transparent; color: var(--accent-text); border: 1.5px solid var(--accent); padding: 10px 18px; font-size: 13.5px; }
 .btn.ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); padding: 14px 22px; }
@@ -344,7 +344,7 @@ section[id], #contact { scroll-margin-top: 96px; }
 /* Angles plus francs, menu sans pilule intérieure */
 .bar { border-radius: 18px; padding: 8px 8px 8px 20px; }
 .bar .pill { background: transparent; border: 0; padding: 0; gap: 4px; border-radius: 0; box-shadow: none; }
-.bar .pill a, .bar .pill a:hover:not(.on), .bar .pill a.on { background: transparent; border-radius: 8px; position: relative; padding: 10px 16px; }
+.bar .pill a, .bar .pill a:hover:not(.on), .bar .pill a.on { background: transparent; border-radius: 8px; position: relative; padding: 8px 14px; }
 .bar .pill a:hover:not(.on) { color: var(--ink); }
 .bar .pill a.on { color: var(--ink); font-weight: 600; }
 .bar .pill a::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 4px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; transition: transform .25s ease; }
@@ -429,13 +429,13 @@ section[id], #contact { scroll-margin-top: 96px; }
 @media (max-width: 640px) { .why { padding-block: 64px; } .fl, .sat { font-size: 12px; padding: 8px 10px; } .ph { width: 44%; } }
 
 /* Logo plus imposant, il se réduit quand la barre colle en haut */
-.bar { padding: 8px 10px 8px 18px; }
+.bar { padding: 5px 8px 5px 16px; }
 .logo { padding: 0; }
-.logo img { height: 60px; transition: height .3s ease; }
-.hd.scrolled .logo img { height: 46px; }
-@media (max-width: 960px) { .logo img { height: 50px; } .hd.scrolled .logo img { height: 42px; } }
+.logo img { height: 46px; transition: height .3s ease; }
+.hd.scrolled .logo img { height: 40px; }
+@media (max-width: 960px) { .logo img { height: 42px; } .hd.scrolled .logo img { height: 38px; } }
 @media (max-width: 760px) { .bar { grid-template-columns: 1fr auto; } .bar .pill { display: none; } }
-@media (max-width: 640px) { .logo img { height: 46px; } .hd.scrolled .logo img { height: 38px; } }
+@media (max-width: 640px) { .logo img { height: 38px; } .hd.scrolled .logo img { height: 34px; } }
 @media (max-width: 880px) {
   .sv, .pr { grid-template-columns: 1fr; }
   .sc.wide { grid-template-columns: 1fr; }
