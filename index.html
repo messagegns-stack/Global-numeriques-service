@@ -630,6 +630,7 @@ section[id], #contact { scroll-margin-top: 96px; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo .ll { display: none; } :root:not([data-theme="light"]) .logo .ld { display: block; } }
 :root[data-theme="dark"] .logo .ll { display: none; } :root[data-theme="dark"] .logo .ld { display: block; }
 .logo { background: transparent !important; }
+.logo:focus, .logo:focus-visible, .logo:active { outline: none !important; box-shadow: none !important; -webkit-tap-highlight-color: transparent; }
 
 /* Bouton réduit + bascule de thème */
 .act .btn.sm { padding: 10px 16px; border-radius: 12px; font-size: 13px; }
