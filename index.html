@@ -730,6 +730,16 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
 @keyframes lgslide { to { transform: translateX(-50%); } }
 @media (max-width: 640px) { .lg-track li.lg-txt span { font-size: 11px; max-width: 96px; } .trust { padding-top: 40px; } .lg-track li { height: 76px; min-width: 120px; padding: 0 20px; } .lg-track img { height: calc(var(--h, 44px) * .82); max-width: 120px; } }
 @media (prefers-reduced-motion: reduce) { .lg-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; padding-right: 0; } .lg-track li[aria-hidden] { display: none; } .lg-mq { -webkit-mask-image: none; mask-image: none; } }
+
+/* Réalisations : défilement continu (droite vers gauche), pause au survol */
+#realisations { overflow-x: clip; }
+.rf-mq { position: relative; left: 50%; margin-left: -50vw; width: 100vw; overflow: hidden; padding: 14px 0 22px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.rf-mq .rf { display: flex; grid-template-columns: none; overflow: visible; margin: 0; padding: 0 20px 0 0; gap: 20px; width: max-content; scroll-snap-type: none; animation: rfslide 72s linear infinite; }
+.rf-mq:hover .rf, .rf-mq:focus-within .rf { animation-play-state: paused; }
+.rf-mq .rc { flex: 0 0 clamp(280px, 26vw, 350px); scroll-snap-align: none; }
+@keyframes rfslide { to { transform: translateX(-50%); } }
+.rhint { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .rf-mq { overflow-x: auto; -webkit-mask-image: none; mask-image: none; } .rf-mq .rf { animation: none; padding: 0 16px; } .rf-mq .rc[aria-hidden] { display: none; } }
 </style>
 </head>
 <body>
@@ -897,37 +907,64 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
   <section class="s" id="realisations">
     <div class="wrap">
       <div class="sh" data-rv><h2>Nos dernières <i class="ser">réalisations</i></h2><p>Des plateformes et des sites en production au Sénégal, conçus et développés par notre équipe.</p></div>
-      <div class="rf">
-        <a class="rc" href="https://www.hassanat.net/" target="_blank" rel="noopener" style="--b:#2F7A52" data-rv aria-label="Hassanât : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>hassanat.net</span></div><div class="scr"><img class="sh1" src="/hassanat.webp" alt="Page d’accueil de Hassanât" loading="lazy" width="1400" height="822"></div></div></div>
+      <div class="rf-mq"><div class="rf">
+        <a class="rc" href="https://www.hassanat.net/" target="_blank" rel="noopener" style="--b:#2F7A52" aria-label="Hassanât : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>hassanat.net</span></div><div class="scr"><img class="sh1" src="/hassanat.webp" alt="Page d’accueil de Hassanât" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Plateforme</span><span>Solidarité</span></div><h3>Hassanât</h3><p>Cagnottes solidaires islamiques au Sénégal : paiement par Wave, Orange Money ou carte, sans frais pour les contributeurs.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-        <a class="rc" href="https://sunuofficine.app/" target="_blank" rel="noopener" style="--b:#1F7A5A" data-rv aria-label="SunuOfficine : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunuofficine.app</span></div><div class="scr"><img class="sh1" src="/sunuofficine.webp" alt="Page d’accueil de SunuOfficine" loading="lazy" width="1400" height="822"></div></div></div>
+        <a class="rc" href="https://sunuofficine.app/" target="_blank" rel="noopener" style="--b:#1F7A5A" aria-label="SunuOfficine : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunuofficine.app</span></div><div class="scr"><img class="sh1" src="/sunuofficine.webp" alt="Page d’accueil de SunuOfficine" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>SaaS</span><span>Santé</span></div><h3>SunuOfficine</h3><p>Gestion d’officine dans le cloud, avec lecture automatique des bons de livraison, utilisable même sans connexion internet.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-        <a class="rc" href="https://www.sunumarketpro.com/" target="_blank" rel="noopener" style="--b:#EE7A30" data-rv aria-label="SunuMarket PRO : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunumarketpro.com</span></div><div class="scr"><img class="sh1" src="/sunumarketpro.webp" alt="Page d’accueil de SunuMarket PRO" loading="lazy" width="1400" height="822"></div></div></div>
+        <a class="rc" href="https://www.sunumarketpro.com/" target="_blank" rel="noopener" style="--b:#EE7A30" aria-label="SunuMarket PRO : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunumarketpro.com</span></div><div class="scr"><img class="sh1" src="/sunumarketpro.webp" alt="Page d’accueil de SunuMarket PRO" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Application</span><span>Commerce</span></div><h3>SunuMarket PRO</h3><p>La caisse intelligente qui marche même sans internet : encaissement, stock et crédits clients.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-        <a class="rc" href="https://galerienationaledart.sn/" target="_blank" rel="noopener" style="--b:#B9783A" data-rv aria-label="Galerie Nationale d’Art : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>galerienationaledart.sn</span></div><div class="scr"><img class="sh1" src="/galerie-nationale-art.webp" alt="Page d’accueil du site de la Galerie Nationale d’Art" loading="lazy" width="1400" height="822"></div></div></div>
+        <a class="rc" href="https://galerienationaledart.sn/" target="_blank" rel="noopener" style="--b:#B9783A" aria-label="Galerie Nationale d’Art : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>galerienationaledart.sn</span></div><div class="scr"><img class="sh1" src="/galerie-nationale-art.webp" alt="Page d’accueil du site de la Galerie Nationale d’Art" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Culture</span></div><h3>Galerie Nationale d’Art</h3><p>Le site de la Galerie Nationale d’Art : actualités, collections, artistes, lauréats du Salon national des arts visuels et appel à candidatures.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-        <a class="rc" href="https://fndasp.sn/" target="_blank" rel="noopener" style="--b:#2E8B57" data-rv aria-label="FNDASP : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>fndasp.sn</span></div><div class="scr"><img class="sh1" src="/fndasp.webp" alt="Page d’accueil du site du FNDASP" loading="lazy" width="1400" height="822"></div></div></div>
+        <a class="rc" href="https://fndasp.sn/" target="_blank" rel="noopener" style="--b:#2E8B57" aria-label="FNDASP : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>fndasp.sn</span></div><div class="scr"><img class="sh1" src="/fndasp.webp" alt="Page d’accueil du site du FNDASP" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Agriculture</span></div><h3>FNDASP</h3><p>Le site du Fonds National de Développement Agro-Sylvo-Pastoral : missions, chiffres clés, agenda, actualités et appels à exécution de projets.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-        <a class="rc" href="https://lapause-zen.com/" target="_blank" rel="noopener" style="--b:#2F8BE6" data-rv aria-label="La Pause Zen : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>lapause-zen.com</span></div><div class="scr"><img class="sh1" src="/lapause-zen.webp" alt="Page d’accueil du site La Pause Zen" loading="lazy" width="1400" height="822"></div></div></div>
+        <a class="rc" href="https://lapause-zen.com/" target="_blank" rel="noopener" style="--b:#2F8BE6" aria-label="La Pause Zen : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>lapause-zen.com</span></div><div class="scr"><img class="sh1" src="/lapause-zen.webp" alt="Page d’accueil du site La Pause Zen" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site événementiel</span><span>Bien-être</span></div><h3>La Pause Zen</h3><p>Le site du forum sur la résilience et le mieux-être au travail, à Ottawa : programme, conférenciers, informations pratiques et réservation de place.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-        <a class="rc" href="https://samzleadership.com/fr/" target="_blank" rel="noopener" style="--b:#3B63D8" data-rv aria-label="Sam Z Leadership : visiter le site">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>samzleadership.com</span></div><div class="scr"><img class="sh1" src="/samz-leadership.webp" alt="Page d’accueil du site Sam Z Executive Coaching & Leadership" loading="lazy" width="1400" height="822"></div></div></div>
+        <a class="rc" href="https://samzleadership.com/fr/" target="_blank" rel="noopener" style="--b:#3B63D8" aria-label="Sam Z Leadership : visiter le site">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>samzleadership.com</span></div><div class="scr"><img class="sh1" src="/samz-leadership.webp" alt="Page d’accueil du site Sam Z Executive Coaching & Leadership" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site vitrine</span><span>Coaching</span></div><h3>Sam Z Leadership</h3><p>Le site de Sam Z Executive Coaching &amp; Leadership, à Ottawa : coaching des cadres, approche, équipe, expertise certifiée et témoignages.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
         </a>
-      </div>
-      <p class="rhint" aria-hidden="true">Faites glisser pour voir les autres projets →</p>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://www.hassanat.net/" target="_blank" rel="noopener" style="--b:#2F7A52">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>hassanat.net</span></div><div class="scr"><img class="sh1" src="/hassanat.webp" alt="Page d’accueil de Hassanât" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>Plateforme</span><span>Solidarité</span></div><h3>Hassanât</h3><p>Cagnottes solidaires islamiques au Sénégal : paiement par Wave, Orange Money ou carte, sans frais pour les contributeurs.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://sunuofficine.app/" target="_blank" rel="noopener" style="--b:#1F7A5A">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunuofficine.app</span></div><div class="scr"><img class="sh1" src="/sunuofficine.webp" alt="Page d’accueil de SunuOfficine" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>SaaS</span><span>Santé</span></div><h3>SunuOfficine</h3><p>Gestion d’officine dans le cloud, avec lecture automatique des bons de livraison, utilisable même sans connexion internet.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://www.sunumarketpro.com/" target="_blank" rel="noopener" style="--b:#EE7A30">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunumarketpro.com</span></div><div class="scr"><img class="sh1" src="/sunumarketpro.webp" alt="Page d’accueil de SunuMarket PRO" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>Application</span><span>Commerce</span></div><h3>SunuMarket PRO</h3><p>La caisse intelligente qui marche même sans internet : encaissement, stock et crédits clients.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://galerienationaledart.sn/" target="_blank" rel="noopener" style="--b:#B9783A">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>galerienationaledart.sn</span></div><div class="scr"><img class="sh1" src="/galerie-nationale-art.webp" alt="Page d’accueil du site de la Galerie Nationale d’Art" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Culture</span></div><h3>Galerie Nationale d’Art</h3><p>Le site de la Galerie Nationale d’Art : actualités, collections, artistes, lauréats du Salon national des arts visuels et appel à candidatures.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://fndasp.sn/" target="_blank" rel="noopener" style="--b:#2E8B57">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>fndasp.sn</span></div><div class="scr"><img class="sh1" src="/fndasp.webp" alt="Page d’accueil du site du FNDASP" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Agriculture</span></div><h3>FNDASP</h3><p>Le site du Fonds National de Développement Agro-Sylvo-Pastoral : missions, chiffres clés, agenda, actualités et appels à exécution de projets.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://lapause-zen.com/" target="_blank" rel="noopener" style="--b:#2F8BE6">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>lapause-zen.com</span></div><div class="scr"><img class="sh1" src="/lapause-zen.webp" alt="Page d’accueil du site La Pause Zen" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>Site événementiel</span><span>Bien-être</span></div><h3>La Pause Zen</h3><p>Le site du forum sur la résilience et le mieux-être au travail, à Ottawa : programme, conférenciers, informations pratiques et réservation de place.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+        <a class="rc" aria-hidden="true" tabindex="-1" href="https://samzleadership.com/fr/" target="_blank" rel="noopener" style="--b:#3B63D8">
+          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>samzleadership.com</span></div><div class="scr"><img class="sh1" src="/samz-leadership.webp" alt="Page d’accueil du site Sam Z Executive Coaching & Leadership" decoding="async" width="1400" height="822"></div></div></div>
+          <div class="rb"><div class="rt"><span>Site vitrine</span><span>Coaching</span></div><h3>Sam Z Leadership</h3><p>Le site de Sam Z Executive Coaching &amp; Leadership, à Ottawa : coaching des cadres, approche, équipe, expertise certifiée et témoignages.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+        </a>
+      </div></div>
     </div>
   </section>
 
