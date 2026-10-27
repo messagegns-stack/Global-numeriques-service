@@ -715,6 +715,19 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
 .rhint { display:none; text-align:center; font-size:12.5px; color:var(--muted); margin-top:2px; }
 @media (max-width:640px){ .rhint{display:block} }
 @media (prefers-reduced-motion:reduce){ .mk{animation:none!important;transition:none} }
+
+/* Bandeau « Ils nous font confiance » */
+.trust { padding: 52px 0 4px; }
+.trust-t { text-align: center; font: 600 12.5px/1 var(--f-body); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
+.lg-mq { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.lg-track { display: flex; gap: 16px; width: max-content; list-style: none; margin: 0; padding: 6px 16px 6px 0; animation: lgslide 48s linear infinite; }
+.lg-mq:hover .lg-track { animation-play-state: paused; }
+.lg-track li { flex: none; display: grid; place-items: center; height: 92px; min-width: 150px; padding: 0 26px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.lg-track img { display: block; height: var(--h, 44px); width: auto; max-width: 150px; object-fit: contain; transition: transform .25s; }
+.lg-track li:hover img { transform: scale(1.06); }
+@keyframes lgslide { to { transform: translateX(-50%); } }
+@media (max-width: 640px) { .trust { padding-top: 40px; } .lg-track li { height: 76px; min-width: 120px; padding: 0 20px; } .lg-track img { height: calc(var(--h, 44px) * .82); max-width: 120px; } }
+@media (prefers-reduced-motion: reduce) { .lg-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; padding-right: 0; } .lg-track li[aria-hidden] { display: none; } .lg-mq { -webkit-mask-image: none; mask-image: none; } }
 </style>
 </head>
 <body>
@@ -758,6 +771,10 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
     </div>
   </div>
 
+  <section class="trust" aria-label="Ils nous font confiance">
+    <div class="wrap"><p class="trust-t" data-rv>Ils nous font confiance</p></div>
+    <div class="lg-mq" data-rv><ul class="lg-track"><li><img src="/logo-hassanat.webp" alt="Logo Hassanât" width="626" height="180" style="--h:38px" loading="lazy" decoding="async"></li><li><img src="/logo-fndasp.webp" alt="Logo FNDASP, Fonds National de Développement Agro-Sylvo-Pastoral" width="145" height="180" style="--h:60px" loading="lazy" decoding="async"></li><li><img src="/logo-gfm.webp" alt="Logo Groupe Futurs Médias" width="268" height="162" style="--h:55px" loading="lazy" decoding="async"></li><li><img src="/logo-sunumarketpro.webp" alt="Logo SunuMarket PRO" width="1594" height="180" style="--h:24px" loading="lazy" decoding="async"></li><li><img src="/logo-galerie-nationale.webp" alt="Logo Galerie Nationale d’Art" width="176" height="180" style="--h:60px" loading="lazy" decoding="async"></li><li><img src="/logo-pointactu.webp" alt="Logo Point Actu" width="600" height="162" style="--h:37px" loading="lazy" decoding="async"></li><li><img src="/logo-sunuofficine.webp" alt="Logo SunuOfficine" width="206" height="44" style="--h:33px" loading="lazy" decoding="async"></li><li><img src="/logo-casamancaise.webp" alt="Logo Casamançaise, eau minérale naturelle" width="173" height="180" style="--h:60px" loading="lazy" decoding="async"></li><li><img src="/logo-galsenlab.webp" alt="Logo Galsen Lab" width="131" height="20" style="--h:22px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-hassanat.webp" alt="" width="626" height="180" style="--h:38px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-fndasp.webp" alt="" width="145" height="180" style="--h:60px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-gfm.webp" alt="" width="268" height="162" style="--h:55px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-sunumarketpro.webp" alt="" width="1594" height="180" style="--h:24px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-galerie-nationale.webp" alt="" width="176" height="180" style="--h:60px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-pointactu.webp" alt="" width="600" height="162" style="--h:37px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-sunuofficine.webp" alt="" width="206" height="44" style="--h:33px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-casamancaise.webp" alt="" width="173" height="180" style="--h:60px" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="/logo-galsenlab.webp" alt="" width="131" height="20" style="--h:22px" loading="lazy" decoding="async"></li></ul></div>
+  </section>
   <section class="s" id="services">
     <div class="wrap">
       <div class="sh" data-rv><h2>Ce qu'on peut <i class="ser">construire</i> pour vous</h2><p>Un site qui rassure, une boutique qui vend, une application qui vous fait gagner du temps. Dites-nous votre besoin : devis gratuit sous 24h.</p></div>
