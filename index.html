@@ -352,6 +352,8 @@ section[id], #contact { scroll-margin-top: 96px; }
 .bar .pill a, .bar .pill a:hover:not(.on), .bar .pill a.on { background: transparent; border-radius: 8px; position: relative; padding: 8px 14px; }
 .bar .pill a:hover:not(.on) { color: var(--ink); }
 .bar .pill a.on { color: var(--ink); font-weight: 600; }
+.bar .pill a { color: var(--ink); font-size: 15.5px; font-weight: 600; letter-spacing: -.005em; }
+.bar .pill a::after { height: 3px; }
 .bar .pill a::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 4px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; transition: transform .25s ease; }
 .bar .pill a.on::after, .bar .pill a:hover::after { transform: scaleX(1); }
 .btn { border-radius: 14px; }
