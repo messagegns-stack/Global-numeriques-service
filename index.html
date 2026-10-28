@@ -30,6 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/swiper-bundle.min.css?v=1">
 <style>:root{color-scheme:light}img{max-width:100%}[hidden]{display:none!important}</style>
 <style>
 /* Concept : page claire et aérée, halo orange derrière le titre, navigation en pilule grise, sections centrées avec cartes blanches fines, grand appel final avec filigrane. Orange GNS en seule couleur d'action. */
@@ -739,13 +740,17 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
 
 /* Réalisations : défilement continu (droite vers gauche), pause au survol */
 #realisations { overflow-x: clip; }
-.rf-mq { position: relative; left: 50%; margin-left: -50vw; width: 100vw; overflow: hidden; padding: 14px 0 22px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
-.rf-mq .rf { display: flex; grid-template-columns: none; overflow: visible; margin: 0; padding: 0 20px 0 0; gap: 20px; width: max-content; scroll-snap-type: none; animation: rfslide 72s linear infinite; }
-.rf-mq:hover .rf, .rf-mq:focus-within .rf { animation-play-state: paused; }
-.rf-mq .rc { flex: 0 0 clamp(280px, 26vw, 350px); scroll-snap-align: none; }
-@keyframes rfslide { to { transform: translateX(-50%); } }
+.rf-cf { position: relative; left: 50%; margin-left: -50vw; width: 100vw; padding: 6px 0 0; }
+.rfSwiper { width: 100%; padding: 18px 0 60px !important; overflow: hidden; }
+.rfSwiper .swiper-slide { width: clamp(290px, 30vw, 380px); height: auto; }
+.rfSwiper .rc { height: 100%; }
+.rfSwiper .rc:hover, .rfSwiper .rc:focus-visible { transform: none; box-shadow: none; }
+.rfSwiper .swiper-slide:not(.swiper-slide-active) .rc { pointer-events: auto; }
+.rfSwiper .swiper-pagination { bottom: 18px !important; }
+.rfSwiper .swiper-pagination-bullet { width: 10px; height: 10px; background: var(--ink); opacity: .28; transition: opacity .2s, width .25s, border-radius .25s; }
+.rfSwiper .swiper-pagination-bullet-active { opacity: 1; width: 26px; border-radius: 6px; background: var(--ink); }
+.rfSwiper .swiper-slide-shadow-left, .rfSwiper .swiper-slide-shadow-right { border-radius: 14px; }
 .rhint { display: none !important; }
-@media (prefers-reduced-motion: reduce) { .rf-mq { overflow-x: auto; -webkit-mask-image: none; mask-image: none; } .rf-mq .rf { animation: none; padding: 0 16px; } .rf-mq .rc[aria-hidden] { display: none; } }
 
 /* Offres */
 .ofr { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
@@ -959,63 +964,39 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
   <section class="s" id="realisations">
     <div class="wrap">
       <div class="sh" data-rv><h2>Des projets <i class="ser">réels</i>, en production</h2><p>Plateformes, SaaS et sites institutionnels utilisés chaque jour au Sénégal et à l'international. Cliquez, testez, jugez par vous-même.</p></div>
-      <div class="rf-mq"><div class="rf">
-        <a class="rc" href="https://www.hassanat.net/" target="_blank" rel="noopener" style="--b:#2F7A52" aria-label="Hassanât : visiter le site">
+      <!-- Carrousel coverflow : Swiper.js (MIT). Design inspiré de Skiper 49 (Skiper UI) : effet coverflow, slide central, pagination. -->
+      <div class="rf-cf"><div class="swiper rfSwiper" aria-label="Nos réalisations">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><a class="rc" href="https://www.hassanat.net/" target="_blank" rel="noopener" style="--b:#2F7A52" aria-label="Hassanât : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>hassanat.net</span></div><div class="scr"><img class="sh1" src="/hassanat.webp" alt="Page d’accueil de Hassanât" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Plateforme</span><span>Solidarité</span></div><h3>Hassanât</h3><p>Cagnottes solidaires islamiques au Sénégal : paiement par Wave, Orange Money ou carte, sans frais pour les contributeurs.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" href="https://sunuofficine.app/" target="_blank" rel="noopener" style="--b:#1F7A5A" aria-label="SunuOfficine : visiter le site">
+        </a></div>
+        <div class="swiper-slide"><a class="rc" href="https://sunuofficine.app/" target="_blank" rel="noopener" style="--b:#1F7A5A" aria-label="SunuOfficine : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunuofficine.app</span></div><div class="scr"><img class="sh1" src="/sunuofficine.webp" alt="Page d’accueil de SunuOfficine" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>SaaS</span><span>Santé</span></div><h3>SunuOfficine</h3><p>Gestion d’officine dans le cloud, avec lecture automatique des bons de livraison, utilisable même sans connexion internet.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" href="https://www.sunumarketpro.com/" target="_blank" rel="noopener" style="--b:#EE7A30" aria-label="SunuMarket PRO : visiter le site">
+        </a></div>
+        <div class="swiper-slide"><a class="rc" href="https://www.sunumarketpro.com/" target="_blank" rel="noopener" style="--b:#EE7A30" aria-label="SunuMarket PRO : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunumarketpro.com</span></div><div class="scr"><img class="sh1" src="/sunumarketpro.webp" alt="Page d’accueil de SunuMarket PRO" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Application</span><span>Commerce</span></div><h3>SunuMarket PRO</h3><p>La caisse intelligente qui marche même sans internet : encaissement, stock et crédits clients.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" href="https://galerienationaledart.sn/" target="_blank" rel="noopener" style="--b:#B9783A" aria-label="Galerie Nationale d’Art : visiter le site">
+        </a></div>
+        <div class="swiper-slide"><a class="rc" href="https://galerienationaledart.sn/" target="_blank" rel="noopener" style="--b:#B9783A" aria-label="Galerie Nationale d’Art : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>galerienationaledart.sn</span></div><div class="scr"><img class="sh1" src="/galerie-nationale-art.webp" alt="Page d’accueil du site de la Galerie Nationale d’Art" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Culture</span></div><h3>Galerie Nationale d’Art</h3><p>Le site de la Galerie Nationale d’Art : actualités, collections, artistes, lauréats du Salon national des arts visuels et appel à candidatures.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" href="https://fndasp.sn/" target="_blank" rel="noopener" style="--b:#2E8B57" aria-label="FNDASP : visiter le site">
+        </a></div>
+        <div class="swiper-slide"><a class="rc" href="https://fndasp.sn/" target="_blank" rel="noopener" style="--b:#2E8B57" aria-label="FNDASP : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>fndasp.sn</span></div><div class="scr"><img class="sh1" src="/fndasp.webp" alt="Page d’accueil du site du FNDASP" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Agriculture</span></div><h3>FNDASP</h3><p>Le site du Fonds National de Développement Agro-Sylvo-Pastoral : missions, chiffres clés, agenda, actualités et appels à exécution de projets.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" href="https://lapause-zen.com/" target="_blank" rel="noopener" style="--b:#2F8BE6" aria-label="La Pause Zen : visiter le site">
+        </a></div>
+        <div class="swiper-slide"><a class="rc" href="https://lapause-zen.com/" target="_blank" rel="noopener" style="--b:#2F8BE6" aria-label="La Pause Zen : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>lapause-zen.com</span></div><div class="scr"><img class="sh1" src="/lapause-zen.webp" alt="Page d’accueil du site La Pause Zen" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site événementiel</span><span>Bien-être</span></div><h3>La Pause Zen</h3><p>Le site du forum sur la résilience et le mieux-être au travail, à Ottawa : programme, conférenciers, informations pratiques et réservation de place.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" href="https://samzleadership.com/fr/" target="_blank" rel="noopener" style="--b:#3B63D8" aria-label="Sam Z Leadership : visiter le site">
+        </a></div>
+        <div class="swiper-slide"><a class="rc" href="https://samzleadership.com/fr/" target="_blank" rel="noopener" style="--b:#3B63D8" aria-label="Sam Z Leadership : visiter le site">
           <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>samzleadership.com</span></div><div class="scr"><img class="sh1" src="/samz-leadership.webp" alt="Page d’accueil du site Sam Z Executive Coaching & Leadership" decoding="async" width="1400" height="822"></div></div></div>
           <div class="rb"><div class="rt"><span>Site vitrine</span><span>Coaching</span></div><h3>Sam Z Leadership</h3><p>Le site de Sam Z Executive Coaching &amp; Leadership, à Ottawa : coaching des cadres, approche, équipe, expertise certifiée et témoignages.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://www.hassanat.net/" target="_blank" rel="noopener" style="--b:#2F7A52">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>hassanat.net</span></div><div class="scr"><img class="sh1" src="/hassanat.webp" alt="Page d’accueil de Hassanât" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>Plateforme</span><span>Solidarité</span></div><h3>Hassanât</h3><p>Cagnottes solidaires islamiques au Sénégal : paiement par Wave, Orange Money ou carte, sans frais pour les contributeurs.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://sunuofficine.app/" target="_blank" rel="noopener" style="--b:#1F7A5A">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunuofficine.app</span></div><div class="scr"><img class="sh1" src="/sunuofficine.webp" alt="Page d’accueil de SunuOfficine" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>SaaS</span><span>Santé</span></div><h3>SunuOfficine</h3><p>Gestion d’officine dans le cloud, avec lecture automatique des bons de livraison, utilisable même sans connexion internet.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://www.sunumarketpro.com/" target="_blank" rel="noopener" style="--b:#EE7A30">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>sunumarketpro.com</span></div><div class="scr"><img class="sh1" src="/sunumarketpro.webp" alt="Page d’accueil de SunuMarket PRO" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>Application</span><span>Commerce</span></div><h3>SunuMarket PRO</h3><p>La caisse intelligente qui marche même sans internet : encaissement, stock et crédits clients.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://galerienationaledart.sn/" target="_blank" rel="noopener" style="--b:#B9783A">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>galerienationaledart.sn</span></div><div class="scr"><img class="sh1" src="/galerie-nationale-art.webp" alt="Page d’accueil du site de la Galerie Nationale d’Art" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Culture</span></div><h3>Galerie Nationale d’Art</h3><p>Le site de la Galerie Nationale d’Art : actualités, collections, artistes, lauréats du Salon national des arts visuels et appel à candidatures.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://fndasp.sn/" target="_blank" rel="noopener" style="--b:#2E8B57">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>fndasp.sn</span></div><div class="scr"><img class="sh1" src="/fndasp.webp" alt="Page d’accueil du site du FNDASP" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>Site institutionnel</span><span>Agriculture</span></div><h3>FNDASP</h3><p>Le site du Fonds National de Développement Agro-Sylvo-Pastoral : missions, chiffres clés, agenda, actualités et appels à exécution de projets.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://lapause-zen.com/" target="_blank" rel="noopener" style="--b:#2F8BE6">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>lapause-zen.com</span></div><div class="scr"><img class="sh1" src="/lapause-zen.webp" alt="Page d’accueil du site La Pause Zen" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>Site événementiel</span><span>Bien-être</span></div><h3>La Pause Zen</h3><p>Le site du forum sur la résilience et le mieux-être au travail, à Ottawa : programme, conférenciers, informations pratiques et réservation de place.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
-        <a class="rc" aria-hidden="true" tabindex="-1" href="https://samzleadership.com/fr/" target="_blank" rel="noopener" style="--b:#3B63D8">
-          <div class="rsh"><div class="bwn"><div class="bwb"><i></i><i></i><i></i><span>samzleadership.com</span></div><div class="scr"><img class="sh1" src="/samz-leadership.webp" alt="Page d’accueil du site Sam Z Executive Coaching & Leadership" decoding="async" width="1400" height="822"></div></div></div>
-          <div class="rb"><div class="rt"><span>Site vitrine</span><span>Coaching</span></div><h3>Sam Z Leadership</h3><p>Le site de Sam Z Executive Coaching &amp; Leadership, à Ottawa : coaching des cadres, approche, équipe, expertise certifiée et témoignages.</p><span class="go">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </a>
+        </a></div>
+      </div>
+      <div class="swiper-pagination"></div>
       </div></div>
     </div>
   </section>
@@ -1308,6 +1289,24 @@ main#top::before { content: ""; position: absolute; z-index: -1; top: 0; left: 5
   try{var sv=localStorage.getItem('gns-theme');if(sv==='dark'||sv==='light')root.setAttribute('data-theme',sv);}catch(e){}
   document.querySelectorAll('.thm').forEach(function(b){b.addEventListener('click',function(){set(cur()==='dark'?'light':'dark');});});
 })();
+</script>
+<script src="/swiper-bundle.min.js?v=1" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.querySelector('.rfSwiper'); if (!el || !window.Swiper) return;
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sw = new Swiper(el, {
+    effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto', loop: true, speed: 650,
+    coverflowEffect: { rotate: 40, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+    pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+    keyboard: { enabled: true, onlyInViewport: true },
+    autoplay: rm ? false : { delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true }
+  });
+  el.addEventListener('click', function (e) {
+    var sl = e.target.closest('.swiper-slide');
+    if (sl && !sl.classList.contains('swiper-slide-active')) { e.preventDefault(); sw.slideToLoop(+sl.getAttribute('data-swiper-slide-index')); }
+  }, true);
+});
 </script>
 </body>
 </html>
